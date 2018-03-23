@@ -14,7 +14,9 @@ class App extends React.Component {
       wishlist: []
     }
     this.onChange = this.onChange.bind(this);
+    this.search = this.search.bind(this);
     this.add = this.add.bind(this);
+    this.del = this.del.bind(this);
   }
 
   componentDidMount() {
@@ -23,7 +25,7 @@ class App extends React.Component {
       success: (data) => {
         this.setState({
           wishlist: data
-        })
+        });
       },
       error: (err) => {
         console.log('3err', err);
@@ -35,14 +37,17 @@ class App extends React.Component {
     this.setState({term: e.target.value});
   }
 
-  search (){
+  search() {
     $.ajax({
       url: '/search',
-      type: 'post',
+      method: 'post',
       data: {term: this.state.term},
       success: (data) => {
         console.log(data);
-        this.setState({games: data});
+        this.setState({
+          games: data,
+          term: ''
+        });
       },
       error: (err) => {
         console.log('Serr', err);
@@ -51,32 +56,46 @@ class App extends React.Component {
   }
 
   add(index) {
-    console.log(this.state.games[index]);
     $.ajax({
       url:'/games',
-      type: 'post',
+      method: 'post',
       data: {game: this.state.games[index]},
       success: (data) => {
-        this.setState({wishlist: data});
+        console.log('wish', data);
+        this.setState({
+          wishlist: data
+        });
       },
       error: (err) => {
         console.log('Aerr', err);
       }
-    })
+    });
   }
 
   del(index) {
-
+    $.ajax({
+      url:'/games',
+      method: 'delete',
+      data: {game: this.state.wishlist[index]['gameId']},
+      success: (data) => {
+        this.setState({wishlist: data});
+      },
+      error: (err) => {
+        console.log('Derr', err);
+      }
+    });
   }
 
   render () {
     return (
       <div className="container-fluid">
-        <h1>Games List</h1>
-        <Search onChange={this.onChange} search={this.search.bind(this)}/>
+        <div>
+          <h4>Games List</h4>
+          <Search onChange={this.onChange} search={this.search} term={this.state.term}/>
+        </div>
         <div className="row">
           <List games={this.state.games} add={this.add}/>
-          <Wishlist games={this.state.wishlist}/>
+          <Wishlist games={this.state.wishlist} del={this.del}/>
         </div>
       </div>
     )

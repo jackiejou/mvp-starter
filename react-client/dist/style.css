@@ -1,3 +1,42 @@
 body {
   font-family: arial;
+  background-color: black;
+  color: white;
+}
+.item {
+  margin: 10px;
+  padding: 10px;
+  background-color: lightblue;
+}
+.button {
+  float: right;
+  border-radius: 5px;
+}
+.wishlist {
+  background-color: black;
+  padding: 10px;
+  color: white;
+}
+.wishlistitem {
+  height: 100px;
+  border: 1px solid lightblue;
+  padding: 10px;
+}
+.wishtext {
+  margin-left: 10px;
+}
+.name {
+  font-size: 20px;
+}
+.icon {
+  float: right;
+  margin-left: 10px;
+}
+.btn-danger {
+  margin-top: 25px;
+  margin-right: 5px;
+}
+.btn-info {
+  margin-left: 10px;
+  border-radius: 5px;
 }

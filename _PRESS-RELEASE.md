@@ -21,16 +21,16 @@ Once the project moves into development, the press release can be used as a touc
   Games List
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
-  An app for games to find and favorite their games
+  An app for games to find games and add to their wishlist
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
 
 ## Problem ##
   > Describe the problem your product solves.
-
+  Users cannot save a games wishlist online
 ## Solution ##
   > Describe how your product elegantly solves the problem.
-
+  Saves a wishlist of games online
 ## Quote from You ##
   > A quote from a spokesperson in your company.
 

@@ -5,10 +5,14 @@ const WishlistItem = (props) => {
     props.del(props.index);
   };
   return (
-    <div>
-      <img src={props.game.image}/>
-      {props.game.name}
-      <button onClick={del}>Remove</button>
+    <div className='wishlistitem'>
+      <div>
+        <div>
+          <img src={props.game.image}/>
+          <button className='button btn-danger' onClick={del}>Remove</button>
+          <a className='wishtext' href={props.game.url}>{props.game.name}</a>
+        </div>
+      </div>
     </div>
   );
 };
